@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { User } from 'firebase';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -10,60 +13,112 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  public isToggled: boolean;
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'All Notes',
+      url: '/all-notes',
+      icon: 'newspaper'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Notebooks',
+      url: '/notebooks',
+      icon: 'reader'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Shared with Me',
+      url: '/shared',
+      icon: 'people'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Collect Photos',
+      url: '/folder/Collect Photos',
+      icon: 'images'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Work Chat',
+      url: '/work-chat',
+      icon: 'chatbox'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Dark Theme',
+      // url: '/folder/Spam',
+      icon: 'moon'
+    }
+    ,
+    {
+      title: 'Settings',
+      url: '/folder/Settings',
+      icon: 'settings-outline'
+    }
+    ,
+    {
+      title: 'Explore Evernote',
+      url: '/folder/Explore Evernote',
+      icon: 'settings'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-
-  constructor(
+  public labels = ['Mar 3 11:07'];
+  user: User;
+  Email: any;
+  constructor(public afAuth: AngularFireAuth, public router: Router ,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
+    
     this.initializeApp();
+    this.checkUser();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
+     
+
+
+      // this.notify();
+      // this.toggleDarkTheme();
     });
+
+
   }
+
 
   ngOnInit() {
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+
+  }
+  toggleDarkTheme(){
+    document.body.classList.toggle('dark', this.isToggled);
+  }
+  public notify() {
+   const themeToggle = document.querySelector('#themeToggle');
+    console.log(themeToggle);
+   
+  }
+  checkUser()
+  {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        console.log(user)
+        this.user = user;
+        this.Email = user.email;
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this.router.navigate(['all-notes']);
+      } else {
+
+        console.log('user is null')
+        localStorage.setItem('user', null);
+        this.router.navigate(['login']);
+      }
+    })
   }
 }

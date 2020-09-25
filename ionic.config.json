@@ -1,5 +1,7 @@
 {
   "name": "EverNote",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

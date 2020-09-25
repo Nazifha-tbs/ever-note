@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,47 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.new-note-modal .modal-wrapper {
+  border-radius: 25px;
+  height: 300px;
+  width: 210px;
+  //   top: 55%;
+  // left: 15%;
+  // right: 15%;
+  bottom: 4%;
+  position: fixed;
+}
+
+ion-modal {
+  ion-backdrop {
+     --backdrop-opacity: 0.88;
+    background-color: #ffffff !important;
+    
+  }
+ 
+}
+.pop-over-options {
+  top: 15px;
+}
+.app-reminder {
+  --width: 90%;
+  // scroll-behavior: smooth;
+  // overflow-y: scroll;
+}
+.sc-ion-popover-md-h {
+  --width: 90%;
+}
+// .popover-wrapper .sc-ion-popover-md {
+//   scroll-behavior: smooth;
+//     overflow-y: scroll;
+// }
+ion-popover{
+
+ overflow-y: scroll;
+   ion-backdrop {
+      overflow-y: scroll;
+    
+  }
+ 
+}

@@ -1,0 +1,37 @@
+<ion-content>
+<img class="logo" src="../assets/notepad.svg">
+<ion-title class="name">
+  Evernote
+</ion-title>
+<ion-title class="quote">
+  Remember everything that matters.
+</ion-title>
+
+<div style="margin-top: 150px;">
+<ion-label class="login" (click)="authService.loginWithEmail()">
+  Log in or sign up for free
+</ion-label>
+<ion-input placeholder="Email">
+
+</ion-input>
+<button>
+  Continue
+</button>
+<div style="display: inline-block">
+
+
+  <ion-item-divider style="display: inline-block;width: 150px;margin-bottom: 4px">
+  
+  </ion-item-divider>
+    <ion-label style="display: inline-block;font-size: 13px;color: #b8b8b8;margin-left: 8px;margin-right: 8px;">
+      or
+    </ion-label>
+    <ion-item-divider style="display: inline-block;width: 150px;margin-bottom: 4px">
+    
+    </ion-item-divider>
+</div>
+<ion-button class="google" color="white" (click)="authService.googleAuth()">
+ <img class="googleIcon" src="../assets/google.svg"> Continue with Google
+</ion-button>
+</div>
+</ion-content>

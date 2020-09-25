@@ -1,0 +1,30 @@
+ion-item {
+  --background: #219921;
+  color: white;
+  ion-icon {
+    color: white;
+  }
+
+  border-bottom: 1px solid #7c7c7c;
+}
+
+ion-content {
+  --background: var(--ion-background-color, #219921);
+}
+ion-backdrop {
+  background-color: #ffffff !important;
+}
+.sc-ion-modal-md-h {
+  --backdrop-opacity: 2 !important;
+}
+.alert-input {
+  
+  padding-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+.alert-input-group.sc-ion-alert-md {
+    -webkit-padding-start: 0px;
+    padding-inline-start: 0px;
+    -webkit-padding-end: 0px;
+    padding-inline-end: 0px;
+  }

@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+   
+    <img slot="end" src="../assets/flash.svg">
+    <ion-icon slot="end" name="search"></ion-icon>
+        <ion-icon (click)="options($event)" slot="end" name="ellipsis-vertical"></ion-icon>
+  </ion-toolbar>
+  <ion-title>All Notes</ion-title>
+</ion-header>
+<ion-content>
+
+
+<img class="note" src="../assets/note.svg">
+
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="newNote()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+      <ion-label> 
+        New Notes
+      </ion-label>
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>
+<!-- <ion-footer style="height: 55px;text-align: center;" mode="ios">
+<ion-button  (click)="newNote()">
+  <ion-icon name="add"></ion-icon>
+  New notes
+</ion-button>
+</ion-footer> -->

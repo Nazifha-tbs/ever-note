@@ -1,0 +1,56 @@
+<ion-content padding>
+<ion-segment  (ionChange)="segmentChanged(segment,$event)"  [(ngModel)]="segment">
+  <ion-segment-button value="Date">
+    <ion-label>Date</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="Time">
+    <ion-label>Time</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<ion-slides #slides (ionSlideDidChange)="slideChanged($index)" scrollbar="true" ng-switch="myVar">
+<ion-slide>
+<!-- <div class="calendar-header">
+ 
+</div> -->
+<div class="calendar-body">
+
+  <ion-grid>
+    <ion-row class="calendar-month">
+      <ion-col col-2 (click)="goToLastMonth()">
+        <ion-icon name="caret-back-outline"></ion-icon>
+      </ion-col>
+      <ion-col col-8>{{currentMon | date :'MMMM'}} {{currentYear}}</ion-col>
+      <ion-col col-2 (click)="goToNextMonth()">
+        <ion-icon name="caret-forward-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="calendar-weekday">
+      <ion-col>Sun</ion-col>
+      <ion-col>Mon</ion-col>
+      <ion-col>Tue</ion-col>
+      <ion-col>Wed</ion-col>
+      <ion-col>Thu</ion-col>
+      <ion-col>Fri</ion-col>
+      <ion-col>Sat</ion-col>
+    </ion-row>
+    <ion-row class="calendar-date">
+      <ion-col class="date"   *ngFor="let lastDay of daysInLastMonth" class="last-month">{{lastDay}}</ion-col>
+      <ion-col class="date"  *ngFor="let day of daysInThisMonth">
+        <span class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
+        <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+      </ion-col>
+      <ion-col  *ngFor="let nextDay of daysInNextMonth" class="next-month date">{{nextDay}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+</ion-slide>
+
+
+<ion-slide>
+watch your time
+</ion-slide>
+</ion-slides>
+
+ 
+</ion-content>

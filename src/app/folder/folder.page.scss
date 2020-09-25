@@ -30,3 +30,7 @@ ion-menu-button {
 ion-content ion-toolbar {
   --background: transparent;
 }
+:host ion-fab {
+  min-width: 100px !important;
+  // --border-radius
+}

@@ -1,0 +1,34 @@
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0px;
+}
+
+ion-toolbar{
+    --padding-end: 15px;
+    --padding-top: 15px;
+    display: inline-block;
+    ion-icon{
+    color: grey;
+    margin-left: 20px;
+    height: 28px;
+    width: 28px;
+}
+}
+.a{
+     margin-left: 20px;
+    font-weight: bold;
+    font-size: 34px;
+}
+ion-content{
+    --padding-start: 15px;
+    --padding-end: 15px;
+
+}
+.listLabel {
+  margin-left: 10px;
+//   color: #696969;
+color: black;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 550;
+
+}
