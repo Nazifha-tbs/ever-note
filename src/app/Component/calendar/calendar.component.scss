@@ -1,7 +1,8 @@
-ion-segment-button{
-    border-bottom: 0.5px solid #c7c7c7;
+ion-segment-button {
+  border-bottom: 0.5px solid #c7c7c7;
 }
-page-home {
+
+.calendar {
   [col-1] {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 8.33333%;
@@ -9,25 +10,31 @@ page-home {
     flex: 0 0 14.285714285714286%;
     width: 14.285714285714286%;
     max-width: 14.285714285714286%;
+    font-size: 12px;
   }
+
   .col {
     text-align: center;
     padding: 5px;
   }
-  
-  .currentDate, .otherDate {
+
+  .currentDate,
+  .otherDate {
     padding: 5px;
   }
+
   .currentDate {
     font-weight: bold;
     background-color: red;
     color: white;
     border-radius: 30px;
   }
+
   .calendar-header {
     background-color: #1a732d;
     color: #FFFFFF;
   }
+
   .event-bullet {
     margin: 2px auto;
     height: 5px;
@@ -35,52 +42,64 @@ page-home {
     background-color: green;
     border-radius: 30px;
   }
+
   .selected-date {
     width: 20px;
     height: 2px;
     background-color: blue;
   }
+
   .unselected-date {
     border: none;
   }
+
   .calendar-body {
-    
+
     .grid {
       padding: 0;
     }
+
     .col:last-child {
       border-right: none;
     }
-    .calendar-weekday, .calendar-date {
+
+    .calendar-weekday,
+    .calendar-date {
       text-align: center;
       margin: 0;
     }
+
     .calendar-weekday {
       font-weight: bold;
       border-bottom: solid 1px #1a732d;
       background-color: #26ab56;
     }
+
     .calendar-date {
-      ion-col{
-        width: 42px;
-        height: 21px;
-      }
       border-top: solid 1px #1a732d;
       border-bottom: solid 1px #1a732d;
     }
   }
-      .calendar-month{
-      width: 100%;
-      }
-      
-    }
-        .date{
-          text-align: center;
-         min-width: 50px !important;
-          height: 26px;
-        }
 
-        .last-month, .next-month {
-    color: #999999;
-    font-size: 90%;
+  .calendar-month {
+    width: 100%;
   }
+
+}
+
+.small-txt {
+  font-size: 12px;
+  color: #949494;
+}
+
+// .date {
+//   text-align: center;
+//   min-width: 50px !important;
+//   height: 26px;
+// }
+
+.last-month,
+.next-month {
+  color: #999999;
+  font-size: 90%;
+}
