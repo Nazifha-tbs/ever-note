@@ -15,6 +15,7 @@ export class ReminderComponent implements OnInit {
   year : any;
   months : any;
   date : any;
+  public title:any
   constructor(private calendar: Calendar, private popCalendar: PopoverController) {
 
     this.year = new Date().getFullYear();
@@ -29,7 +30,9 @@ export class ReminderComponent implements OnInit {
 
 
   }
-
+  CreateNote(){
+    this.popCalendar.dismiss(this.title);
+  }
   async open() {
     let calendar =await this.popCalendar.create({
       component : CalendarComponent

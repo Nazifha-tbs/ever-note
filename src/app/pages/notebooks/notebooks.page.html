@@ -9,5 +9,14 @@
 </ion-header>
 
 <ion-content>
-
+<ion-item *ngFor="let item of list">
+  <ion-card>
+    <ion-title>
+      {{item.title}}
+    </ion-title>
+    <ion-label>
+      {{item.description}}
+    </ion-label>
+  </ion-card>
+</ion-item>
 </ion-content>

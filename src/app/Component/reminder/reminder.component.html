@@ -2,7 +2,7 @@
 
   <div class="inputDiv">
   
-    <ion-input autofocus="true" id="input" #input color="primary" placeholder="Add reminder.." style="float: left;">
+    <ion-input [(ngModel)]="title" autofocus="true" id="input" #input color="primary" placeholder="Add reminder.." style="float: left;">
       
       
     </ion-input >
@@ -19,7 +19,7 @@
     </ion-item>
   
   </ion-list>
-  <ion-button class="buttonStyle" fill="clear">Set</ion-button>
+  <ion-button class="buttonStyle" fill="clear" (click)="CreateNote(title)">Set</ion-button>
   <ion-button class="buttonStyle"  fill="clear">Cancel</ion-button>
 </div>
 

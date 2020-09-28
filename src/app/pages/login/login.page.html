@@ -8,13 +8,16 @@
 </ion-title>
 
 <div style="margin-top: 150px;">
-<ion-label class="login" (click)="authService.loginWithEmail()">
+<ion-label class="login" (click)="authService.loginWithEmail(email,pwd)" >
   Log in or sign up for free
 </ion-label>
-<ion-input placeholder="Email">
+<ion-input placeholder="Email" [(ngModel)]="email">
 
 </ion-input>
-<button>
+<ion-input placeholder="Password" [(ngModel)]="pwd">
+
+</ion-input>
+<button [routerLink]="['/all-notes']">
   Continue
 </button>
 <div style="display: inline-block">

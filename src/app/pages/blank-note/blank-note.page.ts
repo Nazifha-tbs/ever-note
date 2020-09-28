@@ -9,23 +9,28 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./blank-note.page.scss'],
 })
 export class BlankNotePage implements OnInit {
-
-  constructor(public afs: AngularFirestore,) { }
+  public noteTitle: any;
+  public description: any;
+  constructor(public afs: AngularFirestore,) {
+   }
 
   ngOnInit() {
   }
-  createNote(value) {
+  createNote() {
     let currentUser = firebase.auth().currentUser;
-    this.afs.collection('Notes').doc(currentUser.uid).collection('note').add({
-      title: value.title,
-      description: value.description,
-      image: value.image,
-      tag: value.tag,
-      document: value.document,
-      video: value.video
-    }).then(
-      // res => resolve(res),
-      // err => reject(err)
-      )
+    console.log(currentUser.uid)
+    return this.afs.collection('Notes').doc(currentUser.uid).collection('note').add({
+      title: this.noteTitle,
+      description: this.description,
+
+      // title: value.title,
+      // description: value.description,
+      // image: value.image,
+      // tag: value.tag,
+      // document: value.document,
+      // video: value.video
+    });
+    
   }
+ 
 }
