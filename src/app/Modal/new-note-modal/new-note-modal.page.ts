@@ -8,6 +8,8 @@ import { FilePath } from '@ionic-native/file-path/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+
 import { AngularFirestore } from '@angular/fire/firestore';
 // import { resolve } from 'dns';
 import { reject } from 'q';
@@ -24,7 +26,7 @@ export class NewNoteModalPage implements OnInit {
   ref: any;
   noteList = [];
   notes: any;
-  constructor(public afAuth: AngularFireAuth, public base64: Base64, 
+  constructor(public camera: Camera,public afs: AngularFirestore,public afAuth: AngularFireAuth, public base64: Base64, 
     private filePath: FilePath, private fileChooser: FileChooser, public navCtrl: NavController,
     private popOver: PopoverController, private modalCtrl: ModalController,private router : Router) {
     // this.ref = firebase.database().ref('Note/').on('value',(resp) => {
@@ -100,4 +102,34 @@ export class NewNoteModalPage implements OnInit {
       );
   }
 
+  createNoteWithAttachment(image) {
+    let currentUser = firebase.auth().currentUser;
+    console.log(currentUser.uid)
+    return this.afs.collection('Notes').doc(currentUser.uid).collection('note').add({
+      image: image,
+    });
+  }
+  changeImage(val: any) {
+    const options: CameraOptions = {
+      quality: 50,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: val,
+      targetWidth: 500,
+      targetHeight: 500,
+    };
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        let base64Image = "data:image/jpeg;base64," + imageData;
+        this.createNoteWithAttachment(base64Image);
+        this.router.navigate(['/notebooks'])
+
+      },
+      (err) => {
+        localStorage.isAction = false;
+        console.log(err);
+      }
+    );
+  }
 }

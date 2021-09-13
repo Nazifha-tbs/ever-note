@@ -50,7 +50,43 @@ export class AuthService {
     }).catch((error) => {
       console.log(error);
     });
+  }
+  // -----------------------------------------------------
+  signInWithGoogle() {
+    const provider = new auth.GoogleAuthProvider();
+    const scopes = ['profile', 'email'];
+    return this.socialSignIn(provider.providerId, scopes);
+  }
+  socialSignIn(providerName: string, scopes?: Array<string>): Promise<any> {
+    const provider = new auth.OAuthProvider(providerName);
+
+    // add any permission scope you need
+    if (scopes) {
+      scopes.forEach(scope => {
+        provider.addScope(scope);
+      });
+    }
 
     
+      // web but not desktop, for example mobile PWA
+    return this.afAuth.auth.signInWithRedirect(provider);
+    
   }
+  // --------------------
+  logoutUser() {
+    return new Promise((resolve, reject) => {
+      if (this.user) {
+        this.afAuth.auth.signOut()
+          .then(() => {
+            console.log("LOG Out");
+            localStorage.removeItem('user');
+            localStorage.removeItem('Email');
+            resolve();
+          }).catch((error) => {
+            reject();
+          });
+      }
+    })
+  }
+
 }

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { User } from 'firebase';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -66,7 +67,7 @@ export class AppComponent implements OnInit {
   constructor(public afAuth: AngularFireAuth, public router: Router ,
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar, public authService: AuthService
   ) {
     
     this.initializeApp();
@@ -110,13 +111,16 @@ export class AppComponent implements OnInit {
       if (user) {
         console.log(user)
         this.user = user;
-        this.Email = user.email;
+        // this.Email = user.email;
+        localStorage.Email = user.email;
         localStorage.setItem('user', JSON.stringify(this.user));
         this.router.navigate(['all-notes']);
       } else {
 
         console.log('user is null')
-        localStorage.setItem('user', null);
+        localStorage.removeItem('user')
+        localStorage.removeItem('Email');
+        // localStorage.setItem('user', null);
         this.router.navigate(['login']);
       }
     })

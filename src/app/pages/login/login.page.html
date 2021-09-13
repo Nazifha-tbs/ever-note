@@ -17,7 +17,7 @@
 <ion-input placeholder="Password" [(ngModel)]="pwd">
 
 </ion-input>
-<button [routerLink]="['/all-notes']">
+<button (click)="authService.loginWithEmail(email,pwd)">
   Continue
 </button>
 <div style="display: inline-block">

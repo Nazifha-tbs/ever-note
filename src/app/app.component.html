@@ -7,7 +7,7 @@
           <ion-avatar>
             <!-- <img> -->
           </ion-avatar>
-          <ion-note *ngIf="user">{{Email}}</ion-note>
+          <ion-note *ngIf="user != null">{{Email}}</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" [queryParams]="{title: p.title}" lines="none"
@@ -20,6 +20,11 @@
 <!-- (ionChange)="notify()" -->
           
           </ion-menu-toggle>
+          <ion-item (click)="authService.logoutUser()">
+            <ion-label>
+              Sign out
+            </ion-label>
+          </ion-item>
         </ion-list>
 
 
